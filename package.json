@@ -1,0 +1,24 @@
+{
+    "name": "hackfest"
+  , "description": "Hackfest network"
+  , "version": "0.0.1"
+  , "author": "Madhusudhan M S (http://github.com/madhums)"
+  , "engines": {
+        "node": ">= 0.6.18"
+      , "npm": "1.1.9"
+    }
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    }
+  , "dependencies": {
+      "express" : "latest"
+    , "jade"    : "latest"
+    , "mongoose": "latest"
+    , "gzippo" : "latest"
+    , "yaml-config" : "latest"
+    , "connect-mongodb" : "latest"
+    , "mongoose-auth" : "latest"
+    , "everyauth" : "latest"
+    , "nodemon": "latest"
+  }
+}
