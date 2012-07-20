@@ -15,10 +15,9 @@
     , "jade"    : "latest"
     , "mongoose": "latest"
     , "gzippo" : "latest"
-    , "yaml-config" : "latest"
     , "connect-mongodb" : "latest"
-    , "mongoose-auth" : "latest"
-    , "everyauth" : "latest"
+    , "passport" : "latest"
+    , "passport-github" : "latest"
     , "nodemon": "latest"
   }
 }
