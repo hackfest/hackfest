@@ -8,6 +8,7 @@ var express = require('express')
 // Load configurations
 var env = process.env.NODE_ENV || 'development'
   , config = require('./config/config')[env]
+  , auth = require('./authorization')
 
 // Bootstrap db connection
 exports = mongoose = require('mongoose')
@@ -54,14 +55,14 @@ passport.use(new GitHubStrategy({
   }
 ))
 
-var app = express()                             // express app
+var app = express()                                       // express app
 require('./settings').boot(app, config, passport)         // Bootstrap application settings
 
 // Bootstrap controllers
 var controllers_path = __dirname + '/app/controllers'
   , controller_files = fs.readdirSync(controllers_path)
 controller_files.forEach(function (file) {
-  require(controllers_path+'/'+file)(app, passport)
+  require(controllers_path+'/'+file)(app, passport, auth)
 })
 
 // Start the app by listening on <port>
