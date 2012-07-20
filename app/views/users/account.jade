@@ -1,0 +1,23 @@
+extends ../layouts/default
+
+block content
+  img(src=user.github.avatar_url)
+  br
+  p name:
+    = user.name
+  p username:
+    = user.username
+  p email:
+    a(href="mailto:"+user.email)= user.email
+  p profile url:
+    a(href=user.github.html_url)= user.github.html_url
+  p public repos:
+    = user.github.public_repos
+  if (user.github.blog)
+    p blog:
+      a(href=user.github.blog)= user.github.blog
+  p followers:
+    =user.github.followers
+  p bio:
+    = user.github.bio
+
