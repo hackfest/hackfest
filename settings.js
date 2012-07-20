@@ -7,15 +7,14 @@ var express = require('express')
   , gzippo = require('gzippo')
   , mongoStore = require('connect-mongodb')
   , url = require('url')
-  , passport = require('passport')
 
-exports.boot = function(app, config){
-  bootApplication(app, config)
+exports.boot = function(app, config, passport){
+  bootApplication(app, config, passport)
 }
 
 // App settings and middleware
 
-function bootApplication(app, config) {
+function bootApplication(app, config, passport) {
 
   app.set('showStackError', true)
   app.use(express.static(__dirname + '/public'))
@@ -29,12 +28,13 @@ function bootApplication(app, config) {
     app.set('view engine', 'jade')
     // app.set('view options', { layout: 'layouts/default' })
 
+    // cookieParser should be above session
+    app.use(express.cookieParser())
+
     // bodyParser should be above methodOverride
     app.use(express.bodyParser())
     app.use(express.methodOverride())
 
-    // cookieParser should be above session
-    app.use(express.cookieParser())
     app.use(express.session({
       secret: 'hackfest',
       store: new mongoStore({

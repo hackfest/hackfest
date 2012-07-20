@@ -10,7 +10,7 @@ module.exports = function (app, passport) {
     // function will not be called.
   })
 
-  app.get('/auth/github/callback', function(req, res, next) {
+  app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res, next) {
     console.log(req.isAuthenticated())
     // Successful authentication, redirect home.
     res.redirect('/')

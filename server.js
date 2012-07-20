@@ -21,6 +21,15 @@ model_files.forEach(function (file) {
   require(models_path+'/'+file)
 })
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+
 // authentication strategy
 var GitHubStrategy = require('passport-github').Strategy
 passport.use(new GitHubStrategy({
@@ -45,8 +54,8 @@ passport.use(new GitHubStrategy({
   }
 ))
 
-var app = express()                // express app
-require('./settings').boot(app, config)         // Bootstrap application settings
+var app = express()                             // express app
+require('./settings').boot(app, config, passport)         // Bootstrap application settings
 
 // Bootstrap controllers
 var controllers_path = __dirname + '/app/controllers'
