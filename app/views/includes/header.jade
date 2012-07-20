@@ -9,5 +9,11 @@ header#header
             li
               a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
           ul.nav.pull-right
-            li
-              a(href="/auth/github", title="Login") Login
+            if (req && req.isAuthenticated())
+              li
+                a(href="/account", title="Profile") Account
+              li
+                a(href="/logout", title="Logout") Logout
+            else
+              li
+                a(href="/auth/github", title="Login") Login
