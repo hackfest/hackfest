@@ -50,20 +50,17 @@ function bootApplication(app, config, passport) {
 
     // routes should be at the last
     app.use(app.router)
+
   })
 
   app.set('showStackError', false)
 
-  app.locals({
-      appName: 'Hackfest'
-    , title: 'Welcome to Hackfest'
-  })
-
   app.use(function (err, req, res, next) {
     app.locals({
-      req: req
+        appName: 'Hackfest'
+      , title: 'Welcome to Hackfest'
+      , req: req
     })
-    next()
   })
 
 }
