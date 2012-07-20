@@ -4,7 +4,7 @@
   , "version": "0.0.1"
   , "author": "Madhusudhan M S (http://github.com/madhums)"
   , "engines": {
-        "node": ">= 0.6.18"
+        "node": "0.6.18"
       , "npm": "1.1.9"
     }
   , "scripts": {
