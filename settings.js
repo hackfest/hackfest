@@ -21,46 +21,49 @@ function bootApplication(app, config, passport) {
 
   app.use(express.logger(':method :url :status'))
 
-  app.configure(function(){
+  // set views path, template engine and default layout
+  app.set('views', __dirname + '/app/views')
+  app.set('view engine', 'jade')
 
-    // set views path, template engine and default layout
-    app.set('views', __dirname + '/app/views')
-    app.set('view engine', 'jade')
-    // app.set('view options', { layout: 'layouts/default' })
+  app.configure(function () {
+    // dynamic helpers
+    app.use(function (req, res, next) {
+      var msgs = req.session && req.session.messages || []
 
-    // cookieParser should be above session
-    app.use(express.cookieParser())
+      // expose "messages" local variable
+      res.locals.messages = msgs
 
-    // bodyParser should be above methodOverride
-    app.use(express.bodyParser())
-    app.use(express.methodOverride())
+      res.locals.appName = 'Hackfest'
+      res.locals.title = 'Welcome to hackfest'
+      res.locals.req = req
 
-    app.use(express.session({
-      secret: 'hackfest',
-      store: new mongoStore({
-        url: config.db,
-        collection : 'sessions'
-      })
-    }))
-
-    app.use(passport.initialize())
-    app.use(passport.session())
-
-    app.use(express.favicon())
-
-    // routes should be at the last
-    app.use(app.router)
-
-  })
-
-  app.set('showStackError', false)
-
-  app.use(function (err, req, res, next) {
-    app.locals({
-        appName: 'Hackfest'
-      , title: 'Welcome to Hackfest'
-      , req: req
+      next()
     })
   })
+
+  // cookieParser should be above session
+  app.use(express.cookieParser())
+
+  // bodyParser should be above methodOverride
+  app.use(express.bodyParser())
+  app.use(express.methodOverride())
+
+  app.use(express.session({
+    secret: 'hackfest',
+    store: new mongoStore({
+      url: config.db,
+      collection : 'sessions'
+    })
+  }))
+
+  app.use(passport.initialize())
+  app.use(passport.session())
+
+  app.use(express.favicon())
+
+  // routes should be at the last
+  app.use(app.router)
+
+  app.set('showStackError', false)
 
 }
