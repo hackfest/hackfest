@@ -41,6 +41,11 @@ function bootApplication(app, config, passport) {
     })
   })
 
+  app.configure('production', function(){
+    app.use(gzippo.staticGzip(__dirname + '/public'))
+    // view cache is enabled by default in production mode
+  })
+
   // cookieParser should be above session
   app.use(express.cookieParser())
 
