@@ -65,6 +65,27 @@ controller_files.forEach(function (file) {
   require(controllers_path+'/'+file)(app, passport, auth)
 })
 
+// assume "not found" in the error msgs
+// is a 404. this is somewhat silly, but
+// valid, you can do whatever you like, set
+// properties, use instanceof etc.
+app.use(function(err, req, res, next){
+  // treat as 404
+  if (~err.message.indexOf('not found')) return next()
+
+  // log it
+  console.error(err.stack)
+
+  // error page
+  res.status(500).render('500')
+})
+
+// assume 404 since no middleware responded
+app.use(function(req, res, next){
+  res.status(404).render('404', { url: req.originalUrl })
+})
+
+
 // Start the app by listening on <port>
 var port = process.env.PORT || 4000
 app.listen(port)
