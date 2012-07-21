@@ -3,17 +3,22 @@ header#header
   .navbar.navbar-fixed-top(role='navigation')
     .navbar-inner
       .container
-        a.brand(href='/')= appName
+        a.brand(href='/') { #{appName} }
         .nav-collapse.collapse
-          ul.nav
-            li
-              a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
+          //
+            ul.nav
+              li
+                a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
           ul.nav.pull-right
+            li
+              a(href="/hacks", title="Hacks") Hacks
+            li
+              a(href="/hackers", title="Hackers") Hackers
             if (req && req.isAuthenticated())
               li
-                a(href="/account", title="Profile") Account
+                a(href="/account", title="Account") Account
               li
-                a(href="/logout", title="Logout") Logout
+                button(href="/logout", title="Logout", class="btn btn-primary") Logout
             else
               li
-                a(href="/auth/github", title="Login") Login
+                button(href="/auth/github", title="Login", class="btn btn-primary") Login

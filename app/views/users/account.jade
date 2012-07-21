@@ -1,23 +1,29 @@
 extends ../layouts/default
 
-block content
-  img(src=user.github.avatar_url)
+block main
+  h1= user.name
   br
-  p name:
-    = user.name
-  p username:
-    = user.username
-  p email:
-    a(href="mailto:"+user.email)= user.email
-  p profile url:
-    a(href=user.github.html_url)= user.github.html_url
-  p public repos:
-    = user.github.public_repos
-  if (user.github.blog)
-    p blog:
-      a(href=user.github.blog)= user.github.blog
-  p followers:
-    =user.github.followers
-  p bio:
-    = user.github.bio
+  p= user.github.bio
+
+block content
+  .row
+    .span1.offset3
+      img(src=user.github.avatar_url)
+    .span4
+      p
+        i.icon-user
+        &nbsp;
+        a(href=user.github.html_url, target="_blank") github.com/#{user.username}
+      //
+        p email:
+          a(href="mailto:"+user.email)= user.email
+      //
+        p profile url:
+          a(href=user.github.html_url)= user.github.html_url
+      p
+        i.icon-briefcase
+        &nbsp;
+        b #{user.github.public_repos} repositories
+      if (user.github.blog)
+        a(href=user.github.blog)= user.github.blog
 
