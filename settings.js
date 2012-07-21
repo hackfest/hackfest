@@ -18,14 +18,11 @@ function bootApplication(app, config, passport) {
 
   app.set('showStackError', true)
 
-  app.configure('development', function(){
-    app.use(express.static(__dirname + '/public'))
-  })
+  app.use(express.static(__dirname + '/public'))
 
-  app.configure('production', function(){
+  /*app.configure('production', function(){
     app.use(gzippo.staticGzip(__dirname + '/public'))
-    // view cache is enabled by default in production mode
-  })
+  })*/
 
   app.use(express.logger(':method :url :status'))
 
