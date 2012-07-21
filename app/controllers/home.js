@@ -2,7 +2,10 @@
 module.exports = function (app, passport) {
 
   app.get('/', function (req, res) {
-    res.render('home/landing')
+    if (req.isAuthenticated())
+      res.render('home/dash')
+    else
+      res.render('home/landing')
   })
 
 }
