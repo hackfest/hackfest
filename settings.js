@@ -17,7 +17,15 @@ exports.boot = function(app, config, passport){
 function bootApplication(app, config, passport) {
 
   app.set('showStackError', true)
-  app.use(express.static(__dirname + '/public'))
+
+  app.configure('development', function(){
+    app.use(express.static(__dirname + '/public'))
+  })
+
+  app.configure('production', function(){
+    app.use(gzippo.staticGzip(__dirname + '/public'))
+    // view cache is enabled by default in production mode
+  })
 
   app.use(express.logger(':method :url :status'))
 
@@ -39,11 +47,6 @@ function bootApplication(app, config, passport) {
 
       next()
     })
-  })
-
-  app.configure('production', function(){
-    app.use(gzippo.staticGzip(__dirname + '/public'))
-    // view cache is enabled by default in production mode
   })
 
   // cookieParser should be above session
