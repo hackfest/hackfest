@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block main
+  h2 Idea : #{idea.title}
+  br
+  p Author :&nbsp;
+    a(href="/profile/"+idea.author.username)= idea.author.name
+
+block content
+  != idea.description

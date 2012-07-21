@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block content
+  - var action = typeof idea !== 'undefined' ? '/ideas/'+idea.id : '/ideas'
+  - var method = typeof idea !== 'undefined' ? 'PUT' : 'POST'
+  .row
+    .offset3.span6
+      form.form-horizontal(action=action, method="post")
+        input(type="hidden", _method=method)
+        fieldset
+          .control-group
+            input.input-xxlarge(type="text", name="title", placeholder="What's your idea?")
+          .control-group
+            textarea.input-xxlarge(rows="10", name="description", placeholder="A breif description about your idea")
+            p.pull-right.help-block supports
+              &nbsp;
+              a(href="http://github.github.com/github-flavored-markdown/", title="github flavoured markdown") markdown
+          .form-actions
+            button.btn.btn-primary.btn-large(type='submit') Save changes
+            &nbsp;&nbsp;
+            button.btn.btn-large Cancel

@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block main
+  h1 Ideas
+  br
+  p Have an Idea?&nbsp;
+    a(href="/ideas/new", title="create a new idea") create new
+
+block content
+  .offset1
+    each idea in ideas
+      .idea
+        a.title(href="/ideas/"+idea.id, title=idea.title)= idea.title
+        p by &nbsp;
+          a(href="/profile/"+idea.author.username, title=idea.author.name)= idea.author.name
+
