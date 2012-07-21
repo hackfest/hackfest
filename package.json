@@ -14,7 +14,7 @@
       "express" : "latest"
     , "jade"    : "latest"
     , "mongoose": "latest"
-    , "gzippo" : "latest"
+    , "github-flavored-markdown": "latest"
     , "connect-mongodb" : "latest"
     , "passport" : "latest"
     , "passport-github" : "latest"
