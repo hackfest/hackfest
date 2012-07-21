@@ -33,7 +33,7 @@ module.exports = function (app, passport, auth) {
     res.redirect('/')
   })
 
-  app.get('/account', ensureAuthenticated, function (req, res) {
+  app.get('/account', auth.requiresLogin, function (req, res) {
     User
       .findOne({ _id: req.user._id })
       .exec(function (err, user) {
@@ -45,13 +45,13 @@ module.exports = function (app, passport, auth) {
       })
   })
 
-  app.get('/profile/:username', ensureAuthenticated, function (req, res) {
+  app.get('/profile/:username', auth.requiresLogin, function (req, res) {
     res.render('users/profile', {
       user: req.profile
     })
   })
 
-  app.get('/hackers', ensureAuthenticated, function (req, res) {
+  app.get('/hackers', auth.requiresLogin, function (req, res) {
     User
       .find()
       .exec(function (err, users) {
@@ -62,10 +62,5 @@ module.exports = function (app, passport, auth) {
         })
       })
   })
-
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login')
-  }
 
 }
