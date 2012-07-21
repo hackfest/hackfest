@@ -3,3 +3,9 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
 .navbar .brand {
   font-family: Consolas, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace
 }
+
+.login-with-github {
+  background: url(../img/Octocat.png) no-repeat;
+  height: 128px;
+  width:128px;
+}
