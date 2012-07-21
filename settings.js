@@ -4,7 +4,6 @@
  */
 
 var express = require('express')
-  , gzippo = require('gzippo')
   , mongoStore = require('connect-mongodb')
   , url = require('url')
 
