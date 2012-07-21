@@ -9,3 +9,13 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
   height: 128px;
   width:128px;
 }
+
+.idea a.title {
+  font-size: 24px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.idea {
+  margin-bottom: 25px;
+}
