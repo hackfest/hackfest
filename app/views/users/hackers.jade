@@ -1,0 +1,19 @@
+extends ../layouts/default
+
+block main
+  h1 Hackers
+
+block content
+  .row
+    .span12
+      each user in users
+        .span3
+          .row
+            .span1
+              a(href="/profile/"+user.username)
+                img(src=user.github.avatar_url)
+            .span2
+              p= user.name
+              i.icon-user
+              &nbsp;
+              a(href=user.github.html_url, target="_blank") github.com/#{user.username}
