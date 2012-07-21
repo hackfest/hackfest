@@ -23,13 +23,12 @@ model_files.forEach(function (file) {
 })
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
-});
+  done(null, user)
+})
 
 passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
+  done(null, obj)
+})
 
 // authentication strategy
 var GitHubStrategy = require('passport-github').Strategy
