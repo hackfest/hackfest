@@ -34,6 +34,11 @@ function bootApplication(app, config, passport) {
     // dynamic helpers
     app.use(function (req, res, next) {
       var msgs = req.session && req.session.messages || []
+      var Idea = mongoose.model('Idea')
+
+      Idea.count(function (err, count) {
+        res.locals.ideasCount = count
+      })
 
       // expose "messages" local variable
       res.locals.messages = msgs

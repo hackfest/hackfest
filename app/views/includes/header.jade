@@ -11,7 +11,9 @@ header#header
                 a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
           ul.nav.pull-right
             li
-              a(href="/hacks", title="Hacks") Hacks
+              a(href="/ideas", title="Ideas") Ideas
+                &nbsp;
+                span.badge.badge-info= ideasCount
             li
               a(href="/hackers", title="Hackers") Hackers
             if (req && req.isAuthenticated())
