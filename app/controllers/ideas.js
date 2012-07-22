@@ -8,6 +8,7 @@ module.exports = function (app, passport, auth) {
     Idea
       .findOne({ _id: ideaId })
       .populate('author')
+      .populate('comments.user')
       .exec(function (err, idea) {
         if (err) return next(err)
         if (!idea) return next(new Error('Idea not found'))
@@ -112,6 +113,20 @@ module.exports = function (app, passport, auth) {
     }
     else
       res.redirect('/ideas/'+idea.id)
+  })
+
+  app.post('/ideas/:ideaId/comment', auth.requiresLogin, function (req, res) {
+    var idea = req.idea
+    if (!req.body.comment.body.length)
+      return res.redirect('/ideas/'+idea.id+'#comments')
+    idea.comments.push({
+        user: req.user._id
+      , body: req.body.comment.body
+    })
+    idea.save(function (err) {
+      if (err) return res.redirect(400, '/ideas/'+idea.id+'#comments')
+      res.redirect('/ideas/'+idea.id+'#comments')
+    })
   })
 
 }
