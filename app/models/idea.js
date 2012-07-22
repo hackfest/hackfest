@@ -1,13 +1,15 @@
 
 var IdeaSchema = new Schema({
-    title: String
-  , description: String
+    title: {type: String, trim: true}
+  , description: {type: String, trim: true}
   , votes: [{ type: Schema.ObjectId, ref: 'User' }]
-  , comments: [{
+  , comments: [new Schema({
         user: { type: Schema.ObjectId, ref: 'User' }
       , body: String
-    }]
+      , date: { type: Date, default: new Date() }
+    })]
   , author: { type: Schema.ObjectId, ref: 'User' }
+  , date: { type: Date, default: new Date() }
 }, { strict: true })
 
 // validations
