@@ -1,10 +1,13 @@
 extends ../layouts/default
 
 block main
-  h2 Idea : #{idea.title}
+  h2 #{idea.title}
+    &nbsp;
+    a.btn(href="/ideas/"+idea._id+"/edit") Edit
   br
   p Author :&nbsp;
     a(href="/profile/"+idea.author.username)= idea.author.name
 
 block content
-  != idea.description
+  != md.parse(idea.description)
+

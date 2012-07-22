@@ -3,19 +3,27 @@ extends ../layouts/default
 block content
   - var action = typeof idea !== 'undefined' ? '/ideas/'+idea.id : '/ideas'
   - var method = typeof idea !== 'undefined' ? 'PUT' : 'POST'
+
   .row
     .offset3.span6
+      if (typeof errors !== 'undefined')
+        .fade.in.alert.alert-block.alert-error
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            each error in errors
+              li= error.type
+
       form.form-horizontal(action=action, method="post")
-        input(type="hidden", _method=method)
+        input(type="hidden", value=method, name="_method")
         fieldset
           .control-group
-            input.input-xxlarge(type="text", name="title", placeholder="What's your idea?")
+            input.input-xxlarge(type="text", name="title", placeholder="What's your idea?", value= typeof idea !== 'undefined' ? idea.title : '')
           .control-group
-            textarea.input-xxlarge(rows="10", name="description", placeholder="A breif description about your idea")
+            textarea.input-xxlarge(rows="10", name="description", placeholder="A breif description about your idea")= typeof idea !== 'undefined' ? idea.description : ''
             p.pull-right.help-block supports
               &nbsp;
               a(href="http://github.github.com/github-flavored-markdown/", title="github flavoured markdown") markdown
           .form-actions
-            button.btn.btn-primary.btn-large(type='submit') Save changes
+            button.btn.btn-primary.btn-large(type='submit') Submit
             &nbsp;&nbsp;
-            button.btn.btn-large Cancel
+            a.btn.btn-large(href="/ideas") Cancel
