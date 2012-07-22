@@ -12,8 +12,14 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
 
 .idea a.title {
   font-size: 24px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   display: block;
+  line-height: 30px;
+}
+
+.navbar .nav > li > a.icount:hover {
+  text-decoration: none;
+  color: #08C;
 }
 
 .idea {
@@ -37,4 +43,9 @@ html, body {
 /* not required for sticky footer; just pushes hero down a bit */
 .wrapper > .container {
   /*padding-top: 60px;*/
+}
+
+.ideaVote {
+  font-size: 24px;
+  line-height: 32px;
 }

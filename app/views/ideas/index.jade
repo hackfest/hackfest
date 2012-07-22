@@ -7,9 +7,10 @@ block main
     a(href="/ideas/new", title="create a new idea") create new
 
 block content
-  .offset1
-    each idea in ideas
-      .idea
+  each idea in ideas
+    .row
+      .span1.ideaVote { #{idea.votes.length} }
+      .idea.span9
         a.title(href="/ideas/"+idea.id, title=idea.title)= idea.title
         p by &nbsp;
           a(href="/profile/"+idea.author.username, title=idea.author.name)= idea.author.name
