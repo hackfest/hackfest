@@ -6,6 +6,13 @@
 var express = require('express')
   , mongoStore = require('connect-mongodb')
   , url = require('url')
+  , ideasCount
+
+var Idea = mongoose.model('Idea')
+
+Idea.count(function (err, count) {
+  ideasCount = count
+})
 
 exports.boot = function(app, config, passport){
   bootApplication(app, config, passport)
@@ -32,12 +39,7 @@ function bootApplication(app, config, passport) {
   app.configure(function () {
     // dynamic helpers
     app.use(function (req, res, next) {
-      var Idea = mongoose.model('Idea')
-
-      Idea.count(function (err, count) {
-        res.locals.ideasCount = count
-      })
-
+      res.locals.ideasCount = ideasCount
       res.locals.md = require("github-flavored-markdown")
       res.locals.appName = 'Hackfest'
       res.locals.title = 'Welcome to hackfest'
