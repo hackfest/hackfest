@@ -9,9 +9,14 @@ block main
 block content
   each idea in ideas
     .row
-      .span1.ideaVote { #{idea.votes.length} }
+      .span1.ideaVote #{idea.votes.length}
+        br
+        span votes
       .idea.span9
         a.title(href="/ideas/"+idea.id, title=idea.title)= idea.title
         p by &nbsp;
           a(href="/profile/"+idea.author.username, title=idea.author.name)= idea.author.name
+          &nbsp;&nbsp;&nbsp;
+          span #{idea.comments.length} comments
+
 

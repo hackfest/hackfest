@@ -13,7 +13,7 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
 .idea a.title {
   font-size: 24px;
   padding-bottom: 5px;
-  display: block;
+  display: inline-block;
   line-height: 30px;
 }
 
@@ -24,6 +24,10 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
 
 .idea {
   margin-bottom: 25px;
+}
+
+.idea > p {
+  opacity: 0.9;
 }
 
 html, body {
@@ -46,8 +50,18 @@ html, body {
 }
 
 .ideaVote {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 32px;
+  line-height: 20px;
+  font-weight: bold;
+  color: #777;
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+
+.ideaVote > span {
+  font-size: 12px;
+  font-weight: normal;
+  color: #555;
 }
 
 .comment {
