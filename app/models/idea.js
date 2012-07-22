@@ -3,6 +3,10 @@ var IdeaSchema = new Schema({
     title: String
   , description: String
   , votes: [{ type: Schema.ObjectId, ref: 'User' }]
+  , comments: [{
+        user: { type: Schema.ObjectId, ref: 'User' }
+      , body: String
+    }]
   , author: { type: Schema.ObjectId, ref: 'User' }
 }, { strict: true })
 
