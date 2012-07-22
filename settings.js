@@ -32,46 +32,43 @@ function bootApplication(app, config, passport) {
   app.configure(function () {
     // dynamic helpers
     app.use(function (req, res, next) {
-      var msgs = req.session && req.session.messages || []
       var Idea = mongoose.model('Idea')
 
       Idea.count(function (err, count) {
         res.locals.ideasCount = count
       })
 
-      // expose "messages" local variable
-      res.locals.messages = msgs
-
+      res.locals.md = require("github-flavored-markdown")
       res.locals.appName = 'Hackfest'
       res.locals.title = 'Welcome to hackfest'
       res.locals.req = req
 
       next()
     })
+
+    // cookieParser should be above session
+    app.use(express.cookieParser())
+
+    // bodyParser should be above methodOverride
+    app.use(express.bodyParser())
+    app.use(express.methodOverride())
+
+    app.use(express.session({
+      secret: 'hackfest',
+      store: new mongoStore({
+        url: config.db,
+        collection : 'sessions'
+      })
+    }))
+
+    app.use(passport.initialize())
+    app.use(passport.session())
+
+    app.use(express.favicon())
+
+    // routes should be at the last
+    app.use(app.router)
   })
-
-  // cookieParser should be above session
-  app.use(express.cookieParser())
-
-  // bodyParser should be above methodOverride
-  app.use(express.bodyParser())
-  app.use(express.methodOverride())
-
-  app.use(express.session({
-    secret: 'hackfest',
-    store: new mongoStore({
-      url: config.db,
-      collection : 'sessions'
-    })
-  }))
-
-  app.use(passport.initialize())
-  app.use(passport.session())
-
-  app.use(express.favicon())
-
-  // routes should be at the last
-  app.use(app.router)
 
   app.set('showStackError', false)
 
