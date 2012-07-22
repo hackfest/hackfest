@@ -28,6 +28,7 @@ module.exports = function (app, passport) {
               }
           }
         , function(err, results) {
+            if (err) return res.render('500')
             res.render('home/dash', results)
       })
     }

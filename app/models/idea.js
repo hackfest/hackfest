@@ -3,6 +3,7 @@ var IdeaSchema = new Schema({
     title: {type: String, trim: true}
   , description: {type: String, trim: true}
   , votes: [{ type: Schema.ObjectId, ref: 'User' }]
+  , votesCount: Number
   , comments: [new Schema({
         user: { type: Schema.ObjectId, ref: 'User' }
       , body: String
@@ -24,7 +25,7 @@ IdeaSchema.path('description').validate(function (description) {
 
 // statics
 IdeaSchema.statics.trending = function (cb) {
-  return this.find().sort('votes', -1).limit(5).exec(cb)
+  return this.find().sort('votesCount', -1).limit(5).exec(cb)
 }
 
 IdeaSchema.statics.recent = function (cb) {
@@ -34,5 +35,11 @@ IdeaSchema.statics.recent = function (cb) {
 IdeaSchema.statics.featured = function (cb) {
   return this.find().where('featured', true).sort('date', -1).limit(5).exec(cb)
 }
+
+// pre-save hooks
+IdeaSchema.pre('save', function (next) {
+  this.votesCount = this.votes.length
+  next()
+})
 
 mongoose.model('Idea', IdeaSchema)
