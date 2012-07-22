@@ -8,6 +8,7 @@ var IdeaSchema = new Schema({
       , body: String
       , date: { type: Date, default: new Date() }
     })]
+  , featured: { type: Boolean, default: false }
   , author: { type: Schema.ObjectId, ref: 'User' }
   , date: { type: Date, default: new Date() }
 }, { strict: true })
@@ -20,5 +21,18 @@ IdeaSchema.path('title').validate(function (title) {
 IdeaSchema.path('description').validate(function (description) {
   return description.length > 0
 }, 'Description cannot be blank')
+
+// statics
+IdeaSchema.statics.trending = function (cb) {
+  return this.find().sort('votes', -1).limit(5).exec(cb)
+}
+
+IdeaSchema.statics.recent = function (cb) {
+  return this.find().sort('date', -1).limit(5).exec(cb)
+}
+
+IdeaSchema.statics.featured = function (cb) {
+  return this.find().where('featured', true).sort('date', -1).limit(5).exec(cb)
+}
 
 mongoose.model('Idea', IdeaSchema)
