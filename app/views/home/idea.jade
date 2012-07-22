@@ -1,0 +1,6 @@
+p: a(href="/ideas/"+idea.id, title=idea.title)= idea.title
+.meta
+  span #{idea.votes.length} votes
+  &nbsp;&nbsp;
+  span= formatDate(idea.date)
+hr
