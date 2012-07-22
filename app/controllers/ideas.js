@@ -87,4 +87,31 @@ module.exports = function (app, passport, auth) {
       })
   })
 
+  app.post('/ideas/:ideaId/vote', auth.requiresLogin, function (req, res) {
+    var idea = req.idea
+
+    if (idea.votes.indexOf(req.user._id) === -1) {
+      idea.votes.push(req.user._id)
+      idea.save(function (err) {
+        if (err) return res.render('500')
+        res.redirect('/ideas/'+idea.id)
+      })
+    }
+    else
+      res.redirect('/ideas/'+idea.id)
+  })
+
+  app.del('/ideas/:ideaId/vote', auth.requiresLogin, function (req, res) {
+    var idea = req.idea
+    if (idea.votes.indexOf(req.user._id) !== -1) {
+      idea.votes.splice(idea.votes.indexOf(req.user._id), 1)
+      idea.save(function (err) {
+        if (err) return res.render('500')
+        res.redirect('/ideas/'+idea.id)
+      })
+    }
+    else
+      res.redirect('/ideas/'+idea.id)
+  })
+
 }
