@@ -6,14 +6,23 @@ footer.row.footer
         p Follow us on twitter, facebook and tumblr.
           br
           | We will keep you posted on whats going on.
+        //
+          p
+            a.twitter-follow-button(href='https://twitter.com/hackfest_in', data-show-count='false') Follow @hackfest_in
+            script
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          p
+            .fb-like(data-send='false', data-layout='button_count', data-width='130', data-show-faces='false', data-font='lucida grande')
+          p
+            iframe(frameborder='0', border='0', scrolling='no', allowtransparency='true', height='25', width='115', src='http://platform.tumblr.com/v1/follow_button.html?button_type=2&tumblelog=hackfest&color_scheme=light')
         p
-          a.twitter-follow-button(href='https://twitter.com/hackfest_in', data-show-count='false') Follow @hackfest_in
-          script
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-        p
-          .fb-like(data-send='false', data-layout='button_count', data-width='130', data-show-faces='false', data-font='lucida grande')
-        p
-          iframe(frameborder='0', border='0', scrolling='no', allowtransparency='true', height='25', width='115', src='http://platform.tumblr.com/v1/follow_button.html?button_type=2&tumblelog=hackfest&color_scheme=light')
+          a(href="http://twitter.com/hackfest_in", target="_blank")
+            img(src="/img/twitter.png")
+          &nbsp;&nbsp;&nbsp;
+          a(href="http://facebook.com/hackfest.in", target="_blank")
+            img(src="/img/facebook.png")
+          &nbsp;&nbsp;&nbsp;
+          a(href="http://blog.hackfest.in", target="_blank", style="color: #eee"): b Blog
       .span4
         h3 Newsletter
         p Subscribe to our monthly newsletter and be the first to know about our news!
