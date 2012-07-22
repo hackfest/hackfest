@@ -97,6 +97,10 @@ html, body {
   opacity: 0.9;
 }
 
+.dash .meta i {
+  opacity: 0.3;
+}
+
 .dash h2 i {
   margin-top: 10px;
 }

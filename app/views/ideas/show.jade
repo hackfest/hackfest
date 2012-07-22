@@ -19,7 +19,7 @@ block content
         input(type="hidden", name="_method", value="DELETE")
         button.btn.btn-large(type="submit") Cancel vote
       else
-        button.btn.btn-primary.btn-large(type="submit") Vote up
+        button.btn.btn-success.btn-large(type="submit") Vote up
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       if (canAccess)
         a.btn.btn-large(href="/ideas/"+idea._id+"/edit")

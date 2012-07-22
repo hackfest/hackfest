@@ -1,6 +1,10 @@
 p: a(href="/ideas/"+idea.id, title=idea.title)= idea.title
 .meta
+  i.icon-thumbs-up
+  &nbsp;
   span #{idea.votes.length} votes
   &nbsp;&nbsp;
+  i.icon-time
+  &nbsp;
   span= formatDate(idea.date)
 hr
