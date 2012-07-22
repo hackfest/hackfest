@@ -100,3 +100,7 @@ html, body {
 .dash h2 i {
   margin-top: 10px;
 }
+
+.dash .trending a, .dash .recent a, .dash .featured a {
+  font-size: 15px;
+}
