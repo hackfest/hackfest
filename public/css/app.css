@@ -19,3 +19,22 @@ body{font-family:"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;padd
 .idea {
   margin-bottom: 25px;
 }
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -217px;
+}
+
+.push {
+  height: 227px;
+}
+/* not required for sticky footer; just pushes hero down a bit */
+.wrapper > .container {
+  /*padding-top: 60px;*/
+}
