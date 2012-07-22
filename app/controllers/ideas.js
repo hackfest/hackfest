@@ -25,13 +25,18 @@ module.exports = function (app, passport, auth) {
   app.post('/ideas', auth.requiresLogin, function (req, res) {
     var idea = new Idea({
         title: req.body.title
-      , description: require("github-flavored-markdown").parse(req.body.description)
+      , description: req.body.description
       , author: req.user._id
     })
 
     idea.save(function (err) {
-      console.log(err)
-      if (err) return res.render('500')
+      if (err && Object.keys(err.errors).length) {
+        return res.render('ideas/new', {
+            title: 'Propose your idea for the hackfest'
+          , errors: err.errors
+        })
+      }
+
       res.redirect('/ideas/'+idea.id)
     })
   })
@@ -40,6 +45,32 @@ module.exports = function (app, passport, auth) {
     res.render('ideas/show', {
         idea: req.idea
       , title: req.idea.title
+    })
+  })
+
+  app.get('/ideas/:ideaId/edit', auth.requiresLogin, function (req, res) {
+    res.render('ideas/edit', {
+        idea: req.idea
+      , title: req.idea.title
+    })
+  })
+
+  app.put('/ideas/:ideaId', auth.requiresLogin, function (req, res) {
+    var idea = req.idea
+
+    idea.title = req.body.title
+    idea.description = req.body.description
+
+    idea.save(function (err) {
+      if (err && Object.keys(err.errors).length) {
+        return res.render('ideas/edit', {
+            title: 'Propose your idea for the hackfest'
+          , idea: idea
+          , errors: err.errors
+        })
+      }
+
+      res.redirect('/ideas/'+idea.id)
     })
   })
 
