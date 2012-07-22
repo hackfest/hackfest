@@ -44,6 +44,10 @@ function bootApplication(app, config, passport) {
       res.locals.appName = 'Hackfest'
       res.locals.title = 'Welcome to hackfest'
       res.locals.req = req
+      res.locals.formatDate = function (date) {
+        var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+        return monthNames[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear()
+      }
 
       next()
     })
