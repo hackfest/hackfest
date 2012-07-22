@@ -7,4 +7,4 @@ Clone the repo. Then
 $ npm install
 $ npm start
 ```
-#### Please make sure you follow the [coding style](tree/master/CODING-STYLE.md)
+#### Please make sure you follow the [coding style](hackfest/tree/master/CODING-STYLE.md)
