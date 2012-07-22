@@ -7,11 +7,12 @@ block content
   .row
     each user in users
       .span4.hacker
-        .span1
-          a(href="/profile/"+user.username)
-            img(src=user.github.avatar_url)
-        .span3
-          p= user.name
-          i.icon-user
-          &nbsp;
-          a(href=user.github.html_url, target="_blank") github.com/#{user.username}
+        .row
+          .span1
+            a(href="/profile/"+user.username)
+              img(src=user.github.avatar_url)
+          .span3
+            p= user.name
+            i.icon-user
+            &nbsp;
+            a(href=user.github.html_url, target="_blank") github.com/#{user.username}
