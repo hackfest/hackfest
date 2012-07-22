@@ -108,3 +108,7 @@ html, body {
 .dash .trending a, .dash .recent a, .dash .featured a {
   font-size: 15px;
 }
+
+a.voter {
+  margin: 10px 10px 0 0px;
+}

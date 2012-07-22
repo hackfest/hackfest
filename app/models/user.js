@@ -1,6 +1,11 @@
 
+// sometimes users might not have provided their name
+var getName = function (name) {
+  return name ? name : this.username
+}
+
 var UserSchema = new Schema({
-    name: String
+    name: { type: String, get: getName }
   , email: String
   , username: String
   , github: {}
@@ -10,5 +15,8 @@ var UserSchema = new Schema({
 
 
 // virtual attributes
+UserSchema.virtual('avatar').get(function () {
+  return this.github.avatar_url
+})
 
 mongoose.model('User', UserSchema)

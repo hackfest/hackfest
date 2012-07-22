@@ -1,0 +1,6 @@
+#votes
+  h3 Voters
+  br
+  each voter in idea.voters
+    a.voter(href="/profile/"+voter.username)
+      img(src=voter.github.avatar_url, width="50", height="50")

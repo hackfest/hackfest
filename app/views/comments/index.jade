@@ -1,17 +1,15 @@
-.row
-  .span9.offset1
-    #comments
-      h3 Comments
-      br
-      each cmt in idea.comments
-        - var comment = cmt
-        .comment.row
-          .span1
-            a(href="/profile/"+comment.user.username)
-              img(src=comment.user.github.avatar_url, title=comment.user.name)
-          .span8
-            a(href="/profile/"+comment.user.username) #{comment.user.name} :&nbsp
-            != md.parse(comment.body)
-            .date= formatDate(comment.date)
+#comments
+  h3 Comments
+  br
+  each cmt in idea.comments
+    - var comment = cmt
+    .comment.row
+      .span1
+        a(href="/profile/"+comment.user.username)
+          img(src=comment.user.github.avatar_url, title=comment.user.name)
+      .span7
+        a(href="/profile/"+comment.user.username) #{comment.user.name} :&nbsp
+        != md.parse(comment.body)
+        .date= formatDate(comment.date)
 
 include form

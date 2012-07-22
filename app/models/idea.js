@@ -4,6 +4,7 @@ var IdeaSchema = new Schema({
   , description: {type: String, trim: true}
   , votes: [{ type: Schema.ObjectId, ref: 'User' }]
   , votesCount: Number
+  , voters: [{ type: Schema.ObjectId, ref: 'User' }] // same as votes
   , comments: [new Schema({
         user: { type: Schema.ObjectId, ref: 'User' }
       , body: String
@@ -39,6 +40,7 @@ IdeaSchema.statics.featured = function (cb) {
 // pre-save hooks
 IdeaSchema.pre('save', function (next) {
   this.votesCount = this.votes.length
+  this.voters = this.votes
   next()
 })
 

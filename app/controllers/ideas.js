@@ -13,6 +13,7 @@ module.exports = function (app, passport, auth) {
       .findOne({ _id: ideaId })
       .populate('author')
       .populate('comments.user')
+      .populate('voters', ['username', 'github.avatar_url'])
       .exec(function (err, idea) {
         if (err) return next(err)
         if (!idea) return next(new Error('Idea not found'))
