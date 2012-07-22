@@ -4,6 +4,10 @@ var User = mongoose.model('User')
 
 module.exports = function (app, passport, auth) {
 
+  canAccess = function (user, idea) {
+    return user._id.toString() === idea.author._id.toString() ? true : false
+  }
+
   app.param('ideaId', function (req, res, next, ideaId) {
     Idea
       .findOne({ _id: ideaId })
@@ -46,17 +50,18 @@ module.exports = function (app, passport, auth) {
     res.render('ideas/show', {
         idea: req.idea
       , title: req.idea.title
+      , canAccess: canAccess(req.user, req.idea)
     })
   })
 
-  app.get('/ideas/:ideaId/edit', auth.requiresLogin, function (req, res) {
+  app.get('/ideas/:ideaId/edit', auth.requiresLogin, auth.idea.hasAccess, function (req, res) {
     res.render('ideas/edit', {
         idea: req.idea
       , title: req.idea.title
     })
   })
 
-  app.put('/ideas/:ideaId', auth.requiresLogin, function (req, res) {
+  app.put('/ideas/:ideaId', auth.requiresLogin, auth.idea.hasAccess, function (req, res) {
     var idea = req.idea
 
     idea.title = req.body.title
