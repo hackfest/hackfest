@@ -3,7 +3,7 @@ header#header
   .navbar.navbar-fixed-top(role='navigation')
     .navbar-inner
       .container
-        a.brand(href='/') { #{appName} }
+        a.brand(href='/', title=appName) #{appName}
         .nav-collapse.collapse
           //
             ul.nav
@@ -13,9 +13,13 @@ header#header
             li
               a.icount(href="/ideas", title="Ideas") Ideas
                 &nbsp;
-                span.badge.badge-info= ideasCount
+                span.badge.badge-warning= ideasCount
             li
               a(href="/hackers", title="Hackers") Hackers
+            li
+              a(href="/faq", title="FAQ") FAQ
+            li
+              a(href="/about", title="About") About
             if (req && req.isAuthenticated())
               li
                 a(href="/account", title="Account") Account

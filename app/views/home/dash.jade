@@ -1,5 +1,30 @@
 extends ../layouts/default
 
-block content
-  p Dashboard
+block main
+  h1 Explore Ideas
+  br
+  p Browse through the trending, featured and recent ideas. Select one. Lets start hacking!
 
+block content
+  .row.dash
+    .span4.trending
+      h2
+        i.icon-fire
+        |  Trending
+      br
+      each idea in trending
+        include idea
+    .span4.featured
+      h2
+        i.icon-star
+        |  Featured
+      br
+      each idea in featured
+        include idea
+    .span4.recent
+      h2
+        i.icon-time
+        |  Recent
+      br
+      each idea in recent
+        include idea

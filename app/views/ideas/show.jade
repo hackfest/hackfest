@@ -21,7 +21,10 @@ block content
       else
         button.btn.btn-primary.btn-large(type="submit") Vote up
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      a.btn.btn-large(href="/ideas/"+idea._id+"/edit") Edit
+      if (canAccess)
+        a.btn.btn-large(href="/ideas/"+idea._id+"/edit")
+          i.icon-pencil
+          |  Edit
 
   hr
 

@@ -1,5 +1,3 @@
-- var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-
 .row
   .span9.offset1
     #comments
@@ -14,6 +12,6 @@
           .span8
             a(href="/profile/"+comment.user.username) #{comment.user.name} :&nbsp
             != md.parse(comment.body)
-            .date #{monthNames[comment.date.getMonth()]} #{comment.date.getDate()}, #{comment.date.getFullYear()}
+            .date= formatDate(comment.date)
 
 include form
