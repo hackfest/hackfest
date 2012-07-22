@@ -6,8 +6,12 @@ var IdeaSchema = new Schema({
 }, { strict: true })
 
 // validations
+IdeaSchema.path('title').validate(function (title) {
+  return title.length > 0
+}, 'Title cannot be blank')
 
-
-// virtual attributes
+IdeaSchema.path('description').validate(function (description) {
+  return description.length > 0
+}, 'Description cannot be blank')
 
 mongoose.model('Idea', IdeaSchema)
