@@ -1,0 +1,11 @@
+br
+form.form-horizontal(action="/ideas/"+idea.id+'/comment', method="post")
+  .row
+    .span1.offset1
+      img(src=req.user.github.avatar_url)
+    .span9
+      textarea.input-xxlarge(name="comment[body]", placeholder="Share your thoughts about '"+idea.title+"'", rows="3")
+  .row
+    .span9
+      br
+      button.btn.btn-large.btn-primary.pull-right(type="submit") Submit
