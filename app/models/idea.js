@@ -26,15 +26,15 @@ IdeaSchema.path('description').validate(function (description) {
 
 // statics
 IdeaSchema.statics.trending = function (cb) {
-  return this.find().sort('votesCount', -1).limit(5).exec(cb)
+  return this.find().sort({'votesCount': -1}).limit(5).exec(cb)
 }
 
 IdeaSchema.statics.recent = function (cb) {
-  return this.find().sort('date', -1).limit(5).exec(cb)
+  return this.find().sort({'date': -1}).limit(5).exec(cb)
 }
 
 IdeaSchema.statics.featured = function (cb) {
-  return this.find().where('featured', true).sort('date', -1).limit(5).exec(cb)
+  return this.find().where('featured', true).sort({'date': -1}).limit(5).exec(cb)
 }
 
 // pre-save hooks

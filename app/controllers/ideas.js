@@ -13,7 +13,7 @@ module.exports = function (app, passport, auth) {
       .findOne({ _id: ideaId })
       .populate('author')
       .populate('comments.user')
-      .populate('voters', ['username', 'github.avatar_url'])
+      .populate('voters')
       .exec(function (err, idea) {
         if (err) return next(err)
         if (!idea) return next(new Error('Idea not found'))
@@ -85,7 +85,9 @@ module.exports = function (app, passport, auth) {
     Idea
       .find()
       .populate('author')
+      .sort(req.query)
       .exec(function (err, ideas) {
+        console.log(err)
         if (err) return res.render('500')
         res.render('ideas', {
             ideas: ideas

@@ -1,13 +1,6 @@
 
 var Idea = mongoose.model('Idea')
   , async = require('async')
-  , trending
-  , featured
-  , recent
-
-Idea.trending(function (err, ideas) { trending = ideas })
-Idea.recent(function (err, ideas) { recent = ideas })
-Idea.featured(function (err, ideas) { featured = ideas })
 
 module.exports = function (app, passport) {
 
