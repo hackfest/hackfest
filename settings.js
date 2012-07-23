@@ -33,6 +33,7 @@ function bootApplication(app, config, passport) {
   app.configure(function () {
     // dynamic helpers
     app.use(function (req, res, next) {
+      res.locals.ideasCount = 0
 
       var Idea = mongoose.model('Idea')
       Idea.count(function (err, count) {
