@@ -10,7 +10,7 @@ block main
       b= idea.votes.length
 
 block content
-  != md.parse(idea.description)
+  != stripScript(md.parse(idea.description))
   br
   .ac
     - var method = idea.votes.indexOf(req.user._id) !== -1 ? 'DELETE' : 'POST'

@@ -9,7 +9,7 @@
           img(src=comment.user.github.avatar_url, title=comment.user.name)
       .span7
         a(href="/profile/"+comment.user.username) #{comment.user.name} :&nbsp
-        != md.parse(comment.body)
+        != stripScript(md.parse(comment.body))
         .date= formatDate(comment.date)
 
 include form

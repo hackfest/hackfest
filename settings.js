@@ -47,6 +47,9 @@ function bootApplication(app, config, passport) {
         var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec" ]
         return monthNames[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear()
       }
+      res.locals.stripScript = function (str) {
+        return str.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      }
 
       next()
     })
