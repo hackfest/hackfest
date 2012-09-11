@@ -3,12 +3,12 @@ header#header
   .navbar.navbar-fixed-top(role='navigation')
     .navbar-inner
       .container
-        a.brand(href='/', title=appName) #{appName}
+        a.brand(href='/', title=appName) Hackfest
         .nav-collapse.collapse
           //
             ul.nav
               li
-                a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
+               a(href="https://github.com/madhums/hackfest", title="fork me on github") FORK ME ON GITHUB
           ul.nav.pull-right
             li
               a.icount(href="/ideas", title="Ideas") Ideas
@@ -16,10 +16,12 @@ header#header
                 span.badge.badge-warning= ideasCount
             li
               a(href="/hackers", title="Hackers") Hackers
-            li
+            //
+              li
               a(href="/faq", title="FAQ") FAQ
-            li
-              a(href="/about", title="About") About
+            //  
+              li
+                a(href="/about", title="About") About
             if (req && req.isAuthenticated())
               li
                 a(href="/account", title="Account") Account

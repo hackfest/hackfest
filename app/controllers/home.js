@@ -5,7 +5,7 @@ var Idea = mongoose.model('Idea')
 module.exports = function (app, passport) {
 
   app.get('/', function (req, res) {
-    if (req.isAuthenticated()) {
+  /*  if (req.isAuthenticated()) {
 
       callback = function (err, ideas) { return ideas }
 
@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
             res.render('home/dash', results)
       })
     }
-    else
+    else*/
       res.render('home/landing')
   })
 

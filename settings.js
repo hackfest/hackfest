@@ -6,6 +6,7 @@
 var express = require('express')
   , mongoStore = require('connect-mongodb')
   , url = require('url')
+  , engines = require('consolidate')
   , ideasCount
 
 exports.boot = function(app, config, passport){
@@ -31,6 +32,7 @@ function bootApplication(app, config, passport) {
   app.set('view engine', 'jade')
 
   app.configure(function () {
+    app.engine("html", engines.handlebars);
     // dynamic helpers
     app.use(function (req, res, next) {
       res.locals.ideasCount = 0

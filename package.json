@@ -13,6 +13,8 @@
   , "dependencies": {
       "express" : "latest"
     , "jade"    : "latest"
+    , "handlebars": "1.x"
+    , "consolidate": "0.4.x"
     , "mongoose": "3.0.0alpha2"
     , "github-flavored-markdown": "latest"
     , "connect-mongodb" : "latest"
