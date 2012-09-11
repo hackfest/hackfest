@@ -111,3 +111,12 @@ html, body {
 a.voter {
   margin: 10px 10px 0 0px;
 }
+
+p.readblock{
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.orange{
+  color: #EB592A;
+}
