@@ -4,7 +4,7 @@ block main
   h1 Hackfest 3, Pune
   br
   //p An online social networking platform to discover, innovate and validate ideas.
-  p The bimonthly hackathon is back for the third time
+  p Your favourite no-holds-barred hackathon is back for the third time
 block content
   hr
   .row
@@ -12,18 +12,25 @@ block content
       p.lead 
         b We thank our sponsors
         .span3
-          p YourNextLeap
-          p Neo4j
+          a(href='http://yournextleap.com', title="YourNextLeap", target="__blank")
+            img(src="img/sponsor1.png")
+          a(href='http://bootstraptoday.com', title="BootStrapToday", target="__blank")
+            img(src="img/sponsor3.png")
         .span4
-          p BootStrapToday
-          p Changer.nl
-    p We also thank Sapna Infotech Solutions Pvt. Ltd. for hosting the earlier editions of hackfest.
+          a(href='http://www.changer.nl', title="Changer", target="__blank")
+            img(src="img/sponsor2.png")
     .span4
+      br
+      p We also thank 
+        a(src="www.sapnasolutions.com/") Sapna Infotech Solutions Pvt. Ltd. 
+        | for hosting the earlier editions of hackfest.
+      br
+      p.lead Spread the word
       //
        AddThis Button BEGIN
       .addthis_toolbox.addthis_default_style
         a.addthis_button_facebook_like(fb:like:layout="button_count")
-        a.addthis_button_google_plusone(g:plusone:size="medium")
+        // a.addthis_button_google_plusone(g:plusone:size="medium")
         a.addthis_button_tweet
   hr
   .row
