@@ -9,6 +9,7 @@ var UserSchema = new Schema({
   , email: String
   , username: String
   , github: {}
+  , twitter: {}
 }, { strict: true })
 
 // validations

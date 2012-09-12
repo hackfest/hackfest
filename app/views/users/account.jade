@@ -1,29 +1,37 @@
 extends ../layouts/default
-
+- 
 block main
   h1= user.name
   br
-  p= user.github.bio
-
+  if(user.github)
+    p= user.github.bio
+  else
+    p= user.twitter.description
 block content
   .row
     .span1.offset4
-      img(src=user.github.avatar_url)
+      if(user.github)
+        img(src=user.github.avatar_url)
+      else
+        img(src=user.twitter.profile_image_url)
     .span4
       p
         i.icon-user
         &nbsp;
-        a(href=user.github.html_url, target="_blank") github.com/#{user.username}
-      //
-        p email:
-          a(href="mailto:"+user.email)= user.email
-      //
+        if(user.github)
+          a(href=user.github.html_url, target="_blank") github.com/#{user.username}
+        else
+          a(href="http://witter.com/"#{user.username}, target="_blank") twitter.com/#{user.username}
         p profile url:
-          a(href=user.github.html_url)= user.github.html_url
+          if(user.github)
+            a(href=user.github.html_url)= user.github.html_url
+          else
+            a(href="http://witter.com/"#{user.username})= http://twitter.com/#{user.username}
       p
         i.icon-briefcase
         &nbsp;
-        b #{user.github.public_repos} repositories
-      if (user.github.blog)
-        a(href=user.github.blog)= user.github.blog
-
+        if(user.github)
+          b #{user.github.public_repos} repositoriesblock main
+        else
+          if (user.twitter.url)
+             b #{user.twitter.url} repositoriesblock main

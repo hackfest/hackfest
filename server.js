@@ -53,7 +53,32 @@ passport.use(new GitHubStrategy({
       return done(err, user)
     })
   }
-))
+));
+
+var TwitterStrategy = require('passport-twitter').Strategy
+passport.use(new TwitterStrategy({
+    consumerKey: config.twitterConsumerKey,
+    consumerSecret: config.twitterConsumerSecret,
+    callbackURL: config.twitterCallback
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    console.log("--------- ----------");
+    var User = mongoose.model('User')
+    User.findOne({ 'twitter.id': profile.id }, function (err, user) {
+      if (!user) {
+        user = new User({
+            name: profile.displayName
+          //, email: profile.emails[0].value
+          , username: profile.username
+          , twitter: profile._json
+        })
+        user.save()
+      }
+      return done(err, user)
+    })
+  }
+));
 
 var app = express()                                       // express app
 require('./settings').boot(app, config, passport)         // Bootstrap application settings

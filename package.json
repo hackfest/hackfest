@@ -20,6 +20,7 @@
     , "connect-mongodb" : "latest"
     , "passport" : "latest"
     , "passport-github" : "latest"
+    , "passport-twitter" : "latest"
     , "async": "latest"
     , "nodemon": "latest"
   }

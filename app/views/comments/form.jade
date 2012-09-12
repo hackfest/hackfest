@@ -2,7 +2,10 @@ br
 form.form-horizontal(action="/ideas/"+idea.id+'/comment', method="post")
   .row
     .span1
-      img(src=req.user.github.avatar_url)
+      if(req.user.github)
+        img(src=req.user.github.avatar_url)
+      else
+        img(src=req.user.twitter.profile_image_url)
     .span7
       textarea.input-xxlarge(name="comment[body]", placeholder="Share your thoughts about '"+idea.title+"'", rows="3")
   .row

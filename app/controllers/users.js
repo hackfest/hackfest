@@ -27,6 +27,16 @@ module.exports = function (app, passport, auth) {
     res.redirect('/')
   })
 
+  app.get('/auth/twitter', passport.authenticate('twitter'), function(req, res, next){
+    // The request will be redirected to GitHub for authentication, so this
+    // function will not be called.
+  })
+
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), function(req, res, next) {
+    // Successful authentication, redirect home.
+    res.redirect('/')
+  })
+
   app.get('/logout', function(req, res){
     req.logOut()
     res.redirect('/')

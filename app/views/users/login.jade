@@ -1,9 +1,19 @@
 extends ../layouts/default
 
 block main
-  img(src="/img/Octocat.png", width="128", height="128")
   br
   br
-  p
-    a.btn.btn-large(href="/auth/github") Sign in with github
+  .span12
+    .span3.offset2
+      img(src="/img/Octocat.png", width="128", height="128")
+      br
+      br
+      p
+        a.btn.btn-large(href="/auth/github") Log in with github
+    .span3
+      img(src="/img/Twitty.png", width="128", height="128")
+      br
+      br
+      p
+        a.btn.btn-large(href="/auth/twitter") Log in with twitter
 

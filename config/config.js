@@ -6,6 +6,9 @@ module.exports = {
       , secret: 'ac2e59c6cd5073e440d7f3c795271cbbec9beba1'
       , callback: 'http://127.0.0.1:4000/auth/github/callback'
       , redirectPath: '/'
+      , twitterConsumerKey: '4ZudNWebfZIwzZNdivvfA'
+      , twitterConsumerSecret: 'dTjMwP4s6Kj2ah30TgCG8wCqWI8Z82GFXm62NbL9ZvM'
+      , twitterCallback: 'http://127.0.0.1:4000/auth/twitter/callback'
     }
   , production: {
         db: 'mongodb://hackfest:hackfest@staff.mongohq.com:10034/app6024163'

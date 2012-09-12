@@ -48,6 +48,7 @@ module.exports = function (app, passport, auth) {
   })
 
   app.get('/ideas/:ideaId', auth.requiresLogin, function (req, res) {
+    console.log(req.user.twitter);
     res.render('ideas/show', {
         idea: req.idea
       , title: req.idea.title
