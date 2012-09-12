@@ -12,9 +12,12 @@ module.exports = {
     }
   , production: {
         db: 'mongodb://hackfest:hackfest@staff.mongohq.com:10034/app6024163'
-      , appId: '41e7870a61c77d071807'
-      , secret: 'd9ce783c038141767db67808dc246c177113fe03'
-      , callback: 'http://hackfestin.herokuapp.com/auth/github/callback'
+      , appId: '99bb569ae97361d8b1e7'
+      , secret: 'dc6b174f96ff645740ed10260074f047dc27691c'
+      , callback: 'http://churn.hackfest.in/auth/github/callback'
       , redirectPath: '/'
+      , twitterConsumerKey: 'vz1h1rQdEBeQYcTsOlEA'
+      , twitterConsumerSecret: 'TXGwlXkttGVBmI3KR9tEqYFg6BV29kT9Xt4LpvdRPI'
+      , twitterCallback: 'http://churn.hackfest.in/auth/twitter/callback'
     }
 }

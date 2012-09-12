@@ -10,9 +10,16 @@ block content
         .row
           .span1
             a(href="/profile/"+user.username)
-              img(src=user.github.avatar_url)
+              if(user.github)
+                img(src=user.github.avatar_url, width=60, height=60)
+              else
+                img(src=user.twitter.profile_image_url, width=60, height=60)
           .span3
+            br
             p= user.name
             i.icon-user
             &nbsp;
-            a(href=user.github.html_url, target="_blank") github.com/#{user.username}
+            if(user.github)
+              a(href=user.github.html_url, target="_blank") github.com/#{user.username}
+            else
+              a(href="http://twitter.com"+user.username, target="_blank") twitter.com/#{user.username}

@@ -11,9 +11,9 @@ block content
   .row
     .span1.offset4
       if(user.github)
-        img(src=user.github.avatar_url)
+        img(src=user.github.avatar_url, width=60, height=60)
       else
-        img(src=user.twitter.profile_image_url)
+        img(src=user.twitter.profile_image_url, width=60, height=60)
     .span4
       p
         i.icon-user
@@ -21,12 +21,10 @@ block content
         if(user.github)
           a(href=user.github.html_url, target="_blank") github.com/#{user.username}
         else
-          a(href="http://witter.com/"#{user.username}, target="_blank") twitter.com/#{user.username}
-        p profile url:
-          if(user.github)
-            a(href=user.github.html_url)= user.github.html_url
-          else
-            a(href="http://witter.com/"#{user.username})= http://twitter.com/#{user.username}
+          a(href="http://twitter.com/"+user.username, target="_blank") twitter.com/#{user.username}
+        if(user.github)
+          p profile url:
+            a(href=user.github.html_url)= user.github.html_url 
       p
         i.icon-briefcase
         &nbsp;
@@ -34,4 +32,4 @@ block content
           b #{user.github.public_repos} repositoriesblock main
         else
           if (user.twitter.url)
-             b #{user.twitter.url} repositoriesblock main
+             b #{user.twitter.url} 
