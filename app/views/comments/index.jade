@@ -6,7 +6,10 @@
     .comment.row
       .span1
         a(href="/profile/"+comment.user.username)
-          img(src=comment.user.github.avatar_url, title=comment.user.name)
+          if(req.user.github)
+            img(src=comment.user.github.avatar_url, title=comment.user.name)
+          else
+            img(src=comment.user.twitter.profile_image_url, title=comment.user.name)
       .span7
         a(href="/profile/"+comment.user.username) #{comment.user.name} :&nbsp
         != stripScript(md.parse(comment.body))
