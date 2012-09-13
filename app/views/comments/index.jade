@@ -6,7 +6,7 @@
     .comment.row
       .span1
         a(href="/profile/"+comment.user.username)
-          if(req.user.github)
+          if(comment.user.github)
             img(src=comment.user.github.avatar_url, title=comment.user.name)
           else
             img(src=comment.user.twitter.profile_image_url, title=comment.user.name)

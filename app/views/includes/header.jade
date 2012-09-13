@@ -24,6 +24,8 @@ header#header
                 a(href="/about", title="About") About
             if (req && req.isAuthenticated())
               li
+                a(href="/dashboard", title="Dashboard") Dashboard
+              li
                 a(href="/account", title="Account") Account
               li
                 button(href="/logout", title="Logout", class="btn btn-primary") Sign out

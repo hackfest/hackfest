@@ -3,8 +3,9 @@ extends ../layouts/default
 block main
   h1 Ideas
   br
-  p Have an Idea?&nbsp;
-    a(href="/ideas/new", title="create a new idea") create new
+  p 
+    b Have an Idea?&nbsp;&nbsp;&nbsp;
+      a.bigfont(href="/ideas/new", title="create a new idea", class="btn btn-success") create new
 
 block content
   each idea in ideas

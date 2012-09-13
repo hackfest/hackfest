@@ -27,6 +27,28 @@ module.exports = function (app, passport) {
     }
     else*/
       res.render('home/landing')
-  })
+  });
+
+ app.get('/dashboard', function (req, res) {
+    if (req.isAuthenticated()) { 
+        async.parallel({
+             trending: function(callback){
+              Idea.trending(callback)
+            }
+          , featured: function(callback){
+              Idea.featured(callback)
+            }
+          , recent: function(callback){
+              Idea.recent(callback)
+            }
+        }
+      , function(err, results) {
+          if (err) return res.render('500')
+          res.render('home/dash', results)
+      })
+    } else{
+      res.redirect('/');
+    }
+  });
 
 }

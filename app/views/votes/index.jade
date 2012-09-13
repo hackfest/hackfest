@@ -3,7 +3,7 @@
   br
   each voter in idea.voters
     a.voter(href="/profile/"+voter.username)
-      if(req.user.github)
+      if(voter.github)
         img(src=voter.github.avatar_url, width="50", height="50")
       else
         img(src=voter.twitter.profile_image_url, width="50", height="50")
