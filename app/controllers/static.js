@@ -13,4 +13,10 @@ module.exports = function (app, passport, auth) {
     })
   })
 
+  app.get('/schedule', function (req, res) {
+    res.render('static/schedule', {
+        title: 'Hackfest 3 Schedule'
+    })
+  })
+
 }
