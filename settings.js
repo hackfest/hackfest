@@ -46,8 +46,9 @@ function bootApplication(app, config, passport) {
       })
       
       var user = mongoose.model('User')
-      Idea.count(function (err, count) {
+      user.count(function (err, count) {
         res.locals.hackerCount = count
+        console.log(count);
       })
       
      
